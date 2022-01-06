@@ -3,9 +3,8 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class CECView extends JFrame {
-    private static final String[] currencies = new String[] {"RON", "EUR", "USD"};
-    private final JComboBox<String> fromComboBox = new JComboBox<>(currencies);
-    private final JComboBox<String> toComboBox = new JComboBox<>(currencies);
+    private final JComboBox<String> fromComboBox;
+    private final JComboBox<String> toComboBox;
     private final JButton convertButton = new JButton("convert");
     private final JButton clearButton = new JButton("clear");
     private final JTextField userInput = new JTextField(5);
@@ -18,6 +17,9 @@ public class CECView extends JFrame {
 
         userInput.setText("");
         converterOutput.setText("");
+
+        fromComboBox = new JComboBox<>(viewModel.getCurrencies());
+        toComboBox = new JComboBox<>(viewModel.getCurrencies());
 
         JFrame frame = new JFrame("Converter");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
